@@ -1,53 +1,52 @@
 " This is the personal vim configuration of Cameron Pitt
 " Created as I transitioned from vim to neovim. May not be compatible with vim
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " General {
+  set background=dark         " Assume a dark background
+  " Toggle background
+  map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-    set background=dark         " Assume a dark background
+  filetype plugin indent on   " Automatically detect file types.
+  syntax on                   " Syntax highlighting
 
-    map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-
-    filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " Syntax highlighting
-
-    if has('clipboard')
-        if has('unnamedplus')  " When possible use + register for copy-paste
-            set clipboard=unnamed,unnamedplus
-        else         " On mac and Windows, use * register for copy-paste
-            set clipboard=unnamed
-        endif
+  if has('clipboard')
+    if has('unnamedplus')  " When possible use + register for copy-paste
+      set clipboard=unnamed,unnamedplus
+    else         " On mac and Windows, use * register for copy-paste
+      set clipboard=unnamed
     endif
+  endif
 
-    "set autowrite                       " Automatically write a file when leaving a modified buffer
-    set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
-    set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-    set virtualedit=onemore             " Allow for cursor beyond last character
-    set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
-    set hidden                          " Allow buffer switching without saving
-    set iskeyword-=.                    " '.' is an end of word designator
-    set iskeyword-=#                    " '#' is an end of word designator
-    set iskeyword-=-                    " '-' is an end of word designator
+  "set autowrite                       " Automatically write a file when leaving a modified buffer
+  set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+  set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+  set virtualedit=onemore             " Allow for cursor beyond last character
+  set history=1000                    " Store a ton of history (default is 20)
+  set spell                           " Spell checking on
+  set hidden                          " Allow buffer switching without saving
+  set iskeyword-=.                    " '.' is an end of word designator
+  set iskeyword-=#                    " '#' is an end of word designator
+  set iskeyword-=-                    " '-' is an end of word designator
 
-    " Instead of reverting the cursor to the last position in the buffer, we
-    " set it to the first line when editing a git commit message
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  " Instead of reverting the cursor to the last position in the buffer, we
+  " set it to the first line when editing a git commit message
+  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-    " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-    " Restore cursor to file position in previous editing session
-    function! ResCur()
-      if line("'\"") <= line("$")
-        silent! normal! g`"
-        return 1
-      endif
-    endfunction
+  " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+  " Restore cursor to file position in previous editing session
+  function! ResCur()
+    if line("'\"") <= line("$")
+      silent! normal! g`"
+      return 1
+    endif
+  endfunction
 
-    augroup resCur
-      autocmd!
-      autocmd BufWinEnter * call ResCur()
-    augroup END
+  augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+  augroup END
 
-" }
+  " }
 
 " init vim-plug {
   if filereadable(expand("~/.config/nvim/init.plug.vim"))
@@ -56,64 +55,66 @@
 " }
 
 " Key Remappings {
-    " The default leader is '\', but many people prefer ',' as it's in a standard
-    " location. To override this behavior and set it back to '\' (or any other
-    " character) add the following to your .vimrc.before.local file:
-    let mapleader = ','
+  " The default leader is '\', but many people prefer ',' as it's in a standard
+  " location. To override this behavior and set it back to '\' (or any other
+  " character) add the following to your .vimrc.before.local file:
+  let mapleader = ','
 
-    " Accidental shift key fixes
-    if has("user_commands")
-      command! -bang -nargs=* -complete=file E e<bang> <args>
-      command! -bang -nargs=* -complete=file W w<bang> <args>
-      command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-      command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-      command! -bang Wa wa<bang>
-      command! -bang WA wa<bang>
-      command! -bang Q q<bang>
-      command! -bang QA qa<bang>
-      command! -bang Qa qa<bang>
-    endif
+  " Accidental shift key fixes
+  if has("user_commands")
+    command! -bang -nargs=* -complete=file E e<bang> <args>
+    command! -bang -nargs=* -complete=file W w<bang> <args>
+    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+    command! -bang Wa wa<bang>
+    command! -bang WA wa<bang>
+    command! -bang Q q<bang>
+    command! -bang QA qa<bang>
+    command! -bang Qa qa<bang>
+  endif
 
-    cmap Tabe tabe
+  cmap Tabe tabe
 
-    " Visual shifting (does not exit Visual mode)
-    vnoremap < <gv
-    vnoremap > >gv
+  " Visual shifting (does not exit Visual mode)
+  vnoremap < <gv
+  vnoremap > >gv
 
-    " Yank from the cursor to the end of the line, to be consistent with C and D.
-    nnoremap Y y$
+  " Yank from the cursor to the end of the line, to be consistent with C and D.
+  nnoremap Y y$
 
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
+  " For when you forget to sudo.. Really Write the file.
+  cmap w!! w !sudo tee % >/dev/null
 
-    nmap <silent> <leader>/ :nohlsearch<CR>
+  " Clear search
+  nmap <silent> <leader>/ :nohlsearch<CR>
 " }
 
 " Formatting {
-
-    set nowrap                      " Do not wrap long lines
-    set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=2                " Use indents of 4 spaces
-    set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=2                   " An indentation every four columns
-    set softtabstop=2               " Let backspace delete indent
-    set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
-    set splitright                  " Puts new vsplit windows to the right of the current
-    set splitbelow                  " Puts new split windows to the bottom of the current
-    set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-    " Remove trailing whitespaces and ^M chars
-    " To disable the stripping of whitespace, add the following to your
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-    "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  set nowrap                      " Do not wrap long lines
+  set autoindent                  " Indent at the same level of the previous line
+  set shiftwidth=2                " Use indents of 2 spaces
+  set expandtab                   " Tabs are spaces, not tabs
+  set tabstop=2                   " An indentation every four columns
+  set softtabstop=2               " Let backspace delete indent
+  set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+  set splitright                  " Puts new vsplit windows to the right of the current
+  set splitbelow                  " Puts new split windows to the bottom of the current
+  set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+  " Remove trailing whitespaces and ^M chars
+  " To disable the stripping of whitespace, add the following to your
+  autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+  "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " }
 
 " Vim UI {
+  " Set termguicolors if neovim
   if has("nvim")
     set termguicolors
   endif 
+
   colorscheme base16-tomorrow-night
-  let g:airline_powerline_fonts=1
   let g:airline_theme="base16_tomorrow"
+  let g:airline_powerline_fonts=1
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode
@@ -163,7 +164,7 @@
   set list
   set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-" }
+  " }
 
 " Plugin configuration {
   " Deoplete {
@@ -179,7 +180,7 @@
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-  " }
+    " }
 
   " NerdTree {
     map <C-e> :NERDTreeToggle<CR>
@@ -194,126 +195,127 @@
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
     let g:nerdtree_tabs_open_on_gui_startup=0
+    " }
+
+  " Indent Guides {
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_enable_on_vim_startup = 1
+    " }
+
+  " Vim Fugitive {
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
+    nnoremap <silent> <leader>gr :Gread<CR>
+    nnoremap <silent> <leader>gw :Gwrite<CR>
+    nnoremap <silent> <leader>ge :Gedit<CR>
+    " Mnemonic _i_nteractive
+    nnoremap <silent> <leader>gi :Git add -p %<CR>
+    nnoremap <silent> <leader>gg :SignifyToggle<CR>
+    " }
+
+  " deoplete-tern {
+    "Use deoplete.
+    let g:tern_request_timeout = 1
+    "let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+
+    " Use tern_for_vim.
+    let g:tern#command = ["tern"]
+    let g:tern#arguments = ["--persistent"]
   " }
 
-    " Indent Guides {
-      let g:indent_guides_start_level = 2
-      let g:indent_guides_guide_size = 1
-      let g:indent_guides_enable_on_vim_startup = 1
-    " }
+  " jsx {
+    let g:jsx_ext_required = 0
+  " }
 
-    " Vim Fugitive {
-      nnoremap <silent> <leader>gs :Gstatus<CR>
-      nnoremap <silent> <leader>gd :Gdiff<CR>
-      nnoremap <silent> <leader>gc :Gcommit<CR>
-      nnoremap <silent> <leader>gb :Gblame<CR>
-      nnoremap <silent> <leader>gl :Glog<CR>
-      nnoremap <silent> <leader>gp :Git push<CR>
-      nnoremap <silent> <leader>gr :Gread<CR>
-      nnoremap <silent> <leader>gw :Gwrite<CR>
-      nnoremap <silent> <leader>ge :Gedit<CR>
-      " Mnemonic _i_nteractive
-      nnoremap <silent> <leader>gi :Git add -p %<CR>
-      nnoremap <silent> <leader>gg :SignifyToggle<CR>
-    " }
+  " Ale linter {
+    let g:ale_sign_error = "✖"
+    let g:ale_sign_warning = '⚠'
+    highlight ALEErrorSign guifg=Red ctermfg=Red
+    highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
+  " }
 
-    " deoplete-tern {
-      "Use deoplete.
-      let g:tern_request_timeout = 1
-      "let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+  " fzf {
+    let g:fzf_layout = { 'down': '~15%' }
+    let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+    " <C-p> or <C-t> to search files
+    nnoremap <silent> <C-p> :FZF -m<cr>
 
-      
-      " Use tern_for_vim.
-      let g:tern#command = ["tern"]
-      let g:tern#arguments = ["--persistent"]
-    " }
+    " <M-p> for open buffers
+    nnoremap <silent> <C-M-S-p> :Buffers<cr>
 
-    " jsx {
-      let g:jsx_ext_required = 0
-    " }
+    " <M-S-p> for MRU
+    nnoremap <silent> <M-S-p> :History<cr>
 
-    " Ale linter {
-        let g:ale_sign_error = "✖"
-        let g:ale_sign_warning = '⚠'
-        highlight ALEErrorSign guifg=Red ctermfg=Red
-        highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
-    " }
+    " Use fuzzy completion relative filepaths across directory
+    imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
+    "
+    " Better command history with q:
+    command! CmdHist call fzf#vim#command_history()
+    nnoremap q: :CmdHist<CR>
 
-    " fzf {
-        let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-        " <C-p> or <C-t> to search files
-        nnoremap <silent> <C-p> :FZF -m<cr>
+    " Better search history
+    command! QHist call fzf#vim#search_history()
+    nnoremap q/ :QHist<CR>
 
-        " <M-p> for open buffers
-        nnoremap <silent> <C-M-S-p> :Buffers<cr>
-
-        " <M-S-p> for MRU
-        nnoremap <silent> <M-S-p> :History<cr>
-
-        " Use fuzzy completion relative filepaths across directory
-        imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
-        "
-        " Better command history with q:
-        command! CmdHist call fzf#vim#command_history()
-        nnoremap q: :CmdHist<CR>
-
-        " Better search history
-        command! QHist call fzf#vim#search_history()
-        nnoremap q/ :QHist<CR>
-
-        "command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
-    " }
+    "command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
+  " }
 " }
 
 " Functions {
-  " Strip whitespace {
-  function! StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " do the business:
-    %s/\s\+$//e
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-  endfunction
-  " }
-    " Initialize directories {
-    function! InitializeDirectories()
-        let parent = $HOME
-        let prefix = 'vim'
-        let dir_list = {
-                    \ 'backup': 'backupdir',
-                    \ 'views': 'viewdir',
-                    \ 'swap': 'directory' }
+" Strip whitespace {
+function! StripTrailingWhitespace()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " do the business:
+  %s/\s\+$//e
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+" }
+" Initialize directories {
+function! InitializeDirectories()
+  let parent = $HOME
+  let prefix = 'vim'
+  let dir_list = {
+        \ 'backup': 'backupdir',
+        \ 'views': 'viewdir',
+        \ 'swap': 'directory' }
 
-        if has('persistent_undo')
-            let dir_list['undo'] = 'undodir'
-        endif
+  if has('persistent_undo')
+    let dir_list['undo'] = 'undodir'
+  endif
 
-        " To specify a different directory in which to place the vimbackup,
-        " vimviews, vimundo, and vimswap files/directories, add the following to
-        " your .vimrc.before.local file:
-        let common_dir = parent . '/.' . prefix
+  " To specify a different directory in which to place the vimbackup,
+  " vimviews, vimundo, and vimswap files/directories, add the following to
+  " your .vimrc.before.local file:
+  let common_dir = parent . '/.' . prefix
 
-        for [dirname, settingname] in items(dir_list)
-            let directory = common_dir . dirname . '/'
-            if exists("*mkdir")
-                if !isdirectory(directory)
-                    call mkdir(directory)
-                endif
-            endif
-            if !isdirectory(directory)
-                echo "Warning: Unable to create backup directory: " . directory
-                echo "Try: mkdir -p " . directory
-            else
-                let directory = substitute(directory, " ", "\\\\ ", "g")
-                exec "set " . settingname . "=" . directory
-            endif
-        endfor
-    endfunction
-    call InitializeDirectories()
-    " }
+  for [dirname, settingname] in items(dir_list)
+    let directory = common_dir . dirname . '/'
+    if exists("*mkdir")
+      if !isdirectory(directory)
+        call mkdir(directory)
+      endif
+    endif
+    if !isdirectory(directory)
+      echo "Warning: Unable to create backup directory: " . directory
+      echo "Try: mkdir -p " . directory
+    else
+      let directory = substitute(directory, " ", "\\\\ ", "g")
+      exec "set " . settingname . "=" . directory
+    endif
+  endfor
+endfunction
+call InitializeDirectories()
+" }
 " }
 

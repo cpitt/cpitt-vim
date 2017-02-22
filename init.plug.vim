@@ -65,6 +65,10 @@
     Plug 'benjie/neomake-local-eslint.vim'
   " }
 
+  " GoLang {
+    Plug 'fatih/vim-go'
+  " }
+
   " Html Plugins {
     Plug 'bonsaiben/bootstrap-snippets'
     Plug 'vim-scripts/HTML-AutoCloseTag'

@@ -1,3 +1,4 @@
+" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " ____     ____    ______  ______  ______          __  __  ______
 "/\  _`\  /\  _`\ /\__  _\/\__  _\/\__  _\        /\ \/\ \/\__  _\   /'\_/`\
 "\ \ \/\_\\ \ \L\ \/_/\ \/\/_/\ \/\/_/\ \/        \ \ \ \ \/_/\ \/  /\      \
@@ -8,8 +9,9 @@
 "
 " This is the personal vim configuration of Cameron Pitt
 " Created as I transitioned from vim to neovim. May not be compatible with vim
-" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+
 " General {
+  set nocompatible
   set background=dark         " Assume a dark background
   " Toggle background
   map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>

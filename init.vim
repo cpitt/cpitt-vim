@@ -1,3 +1,11 @@
+" ____     ____    ______  ______  ______          __  __  ______
+"/\  _`\  /\  _`\ /\__  _\/\__  _\/\__  _\        /\ \/\ \/\__  _\   /'\_/`\
+"\ \ \/\_\\ \ \L\ \/_/\ \/\/_/\ \/\/_/\ \/        \ \ \ \ \/_/\ \/  /\      \
+" \ \ \/_/_\ \ ,__/  \ \ \   \ \ \   \ \ \  _______\ \ \ \ \ \ \ \  \ \ \__\ \
+"  \ \ \L\ \\ \ \/    \_\ \__ \ \ \   \ \ \/\______\\ \ \_/ \ \_\ \__\ \ \_/\ \
+"   \ \____/ \ \_\    /\_____\ \ \_\   \ \_\/______/ \ `\___/ /\_____\\ \_\\ \_\
+"    \/___/   \/_/    \/_____/  \/_/    \/_/          `\/__/  \/_____/ \/_/ \/_/
+"
 " This is the personal vim configuration of Cameron Pitt
 " Created as I transitioned from vim to neovim. May not be compatible with vim
 " vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
@@ -167,13 +175,21 @@
   " }
 
 " Plugin configuration {
+  " Ultisnips {
+    " remap Ultisnips for compatibility for deoplete tab
+    let g:UltiSnipsExpandTrigger = '<C-j>'
+    let g:UltiSnipsListSnippets = '<C-l>'
+    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+
+    let g:UltiSnipsEditSplit="vertical"
+    set runtimepath^=~/.vim/UltiSnips/
+  " }
+
   " Deoplete {
     let g:deoplete#enable_at_startup = 1
 
-    " remap Ultisnips for compatibility for YCM
-    let g:UltiSnipsExpandTrigger = '<C-j>'
-    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
     " deoplete tab-complete
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -278,6 +294,10 @@
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
+  " }
+
+  " NerdCommentor {
+    let g:NERDSpaceDelims = 1
   " }
 " }
 

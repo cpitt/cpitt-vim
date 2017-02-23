@@ -122,6 +122,9 @@
     set termguicolors
   endif 
 
+  " set background to transparent
+  hi Normal guibg=NONE ctermbg=NONE
+
   colorscheme base16-tomorrow-night
   let g:airline_theme="base16_tomorrow"
   let g:airline_powerline_fonts=1

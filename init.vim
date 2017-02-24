@@ -118,7 +118,7 @@
 
 " Vim UI {
   " Set termguicolors if neovim
-  if has("nvim")
+  if has('termguicolors')
     set termguicolors
   endif 
 
@@ -129,12 +129,10 @@
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode
-
   set cursorline                  " Highlight current line
 
   " set background to transparent
   highlight Normal guibg=NONE ctermbg=NONE 
-
   highlight clear SignColumn      " SignColumn should match background
   highlight clear LineNr          " Current line number row will have same background color in relative mode
 
@@ -151,9 +149,7 @@
     " Broken down into easily includeable segments
     set statusline=%<%f\                     " Filename
     set statusline+=%w%h%m%r                 " Options
-    if !exists('g:override_spf13_bundles')
-      set statusline+=%{fugitive#statusline()} " Git Hotness
-    endif
+    set statusline+=%{fugitive#statusline()} " Git Hotness
     set statusline+=\ [%{&ff}/%Y]            " Filetype
     set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
@@ -196,6 +192,16 @@
   " Deoplete {
     let g:deoplete#enable_at_startup = 1
 
+
+    "" omnifuncs
+    augroup omnifuncs
+      autocmd!
+      autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+      autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+      autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    augroup end
 
     " deoplete tab-complete
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -252,7 +258,7 @@
   " }
 
   " jsx {
-    let g:jsx_ext_required = 0
+    let g:jsx_ext_required = 0 " Allow jsx in js files
   " }
 
   " Ale linter {
@@ -303,7 +309,7 @@
   " }
 
   " NerdCommentor {
-    let g:NERDSpaceDelims = 1
+    let g:NERDSpaceDelims = 1 " add space after comment char
   " }
 " }
 

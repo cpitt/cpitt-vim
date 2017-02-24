@@ -122,8 +122,6 @@
     set termguicolors
   endif 
 
-  " set background to transparent
-  hi Normal guibg=NONE ctermbg=NONE
 
   colorscheme base16-tomorrow-night
   let g:airline_theme="base16_tomorrow"
@@ -133,6 +131,9 @@
   set showmode                    " Display the current mode
 
   set cursorline                  " Highlight current line
+
+  " set background to transparent
+  highlight Normal guibg=NONE ctermbg=NONE 
 
   highlight clear SignColumn      " SignColumn should match background
   highlight clear LineNr          " Current line number row will have same background color in relative mode

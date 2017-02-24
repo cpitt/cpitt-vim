@@ -2,13 +2,13 @@
 
 " Plug {
   " Install vim-plug if it doesn't exist already
-  if empty(glob('~/.config/nvim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  if empty(glob('~/.cpitt-vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.cpitt-vim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
 
-  call plug#begin('~/.config/nvim/plugins')
+  call plug#begin('~/.cpitt-vim/plugins')
   " General Plugins {
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'

@@ -54,15 +54,14 @@
     Plug 'groenewege/vim-less'
     Plug 'pangloss/vim-javascript'
     Plug 'briancollins/vim-jst'
-    Plug 'mvolkmann/vim-react'
     Plug 'isRuslan/vim-es6'
-    Plug 'burnettk/vim-angular'
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     Plug 'mmozuras/snipmate-mocha'
     Plug 'mxw/vim-jsx'
+    " Toggle react class and function definition, didn't work well consider removing
+    Plug 'mvolkmann/vim-react' 
     Plug 'othree/jspc.vim'
-    Plug 'benjie/neomake-local-eslint.vim'
   " }
 
   " GoLang {

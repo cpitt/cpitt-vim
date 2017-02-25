@@ -59,8 +59,8 @@
   " }
 
 " init vim-plug {
-  if filereadable(expand("~/.config/nvim/init.plug.vim"))
-    source ~/.config/nvim/init.plug.vim
+  if filereadable(expand("~/.cpitt-vim/init.plug.vim"))
+    source ~/.cpitt-vim/init.plug.vim
   endif
 " }
 

@@ -270,7 +270,7 @@
 
   " fzf {
     let g:fzf_layout = { 'down': '~15%' }
-    let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
     " <C-p> or <C-t> to search files
     nnoremap <silent> <C-p> :FZF -m<cr>
 

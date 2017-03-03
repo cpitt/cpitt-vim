@@ -56,6 +56,8 @@
     autocmd BufWinEnter * call ResCur()
   augroup END
 
+  autocmd BufEnter * silent! lcd %:p:h " Automatically chdir for file
+  
   " }
 
 " init vim-plug {
@@ -269,10 +271,12 @@
   " }
 
   " fzf {
+    command! ProjectFiles execute 'Files' s:find_git_root()
+
     let g:fzf_layout = { 'down': '~15%' }
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
     " <C-p> or <C-t> to search files
-    nnoremap <silent> <C-p> :FZF -m<cr>
+    nnoremap <silent> <C-p> :ProjectFiles<cr>
 
     " <M-p> for open buffers
     nnoremap <silent> <C-M-S-p> :Buffers<cr>
@@ -314,53 +318,60 @@
 " }
 
 " Functions {
-" Strip whitespace {
-function! StripTrailingWhitespace()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " do the business:
-  %s/\s\+$//e
-  " clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-" }
-" Initialize directories {
-function! InitializeDirectories()
-  let parent = $HOME
-  let prefix = 'vim'
-  let dir_list = {
-        \ 'backup': 'backupdir',
-        \ 'views': 'viewdir',
-        \ 'swap': 'directory' }
+  " Strip whitespace {
+  function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+  endfunction
+  " }
 
-  if has('persistent_undo')
-    let dir_list['undo'] = 'undodir'
-  endif
+  " Initialize directories {
+  function! InitializeDirectories()
+    let parent = $HOME
+    let prefix = 'vim'
+    let dir_list = {
+          \ 'backup': 'backupdir',
+          \ 'views': 'viewdir',
+          \ 'swap': 'directory' }
 
-  " To specify a different directory in which to place the vimbackup,
-  " vimviews, vimundo, and vimswap files/directories, add the following to
-  " your .vimrc.before.local file:
-  let common_dir = parent . '/.' . prefix
+    if has('persistent_undo')
+      let dir_list['undo'] = 'undodir'
+    endif
 
-  for [dirname, settingname] in items(dir_list)
-    let directory = common_dir . dirname . '/'
-    if exists("*mkdir")
-      if !isdirectory(directory)
-        call mkdir(directory)
+    " To specify a different directory in which to place the vimbackup,
+    " vimviews, vimundo, and vimswap files/directories, add the following to
+    " your .vimrc.before.local file:
+    let common_dir = parent . '/.' . prefix
+
+    for [dirname, settingname] in items(dir_list)
+      let directory = common_dir . dirname . '/'
+      if exists("*mkdir")
+        if !isdirectory(directory)
+          call mkdir(directory)
+        endif
       endif
-    endif
-    if !isdirectory(directory)
-      echo "Warning: Unable to create backup directory: " . directory
-      echo "Try: mkdir -p " . directory
-    else
-      let directory = substitute(directory, " ", "\\\\ ", "g")
-      exec "set " . settingname . "=" . directory
-    endif
-  endfor
-endfunction
-call InitializeDirectories()
-" }
+      if !isdirectory(directory)
+        echo "Warning: Unable to create backup directory: " . directory
+        echo "Try: mkdir -p " . directory
+      else
+        let directory = substitute(directory, " ", "\\\\ ", "g")
+        exec "set " . settingname . "=" . directory
+      endif
+    endfor
+  endfunction
+  call InitializeDirectories()
+  " }
+
+  " find_git_root {
+    function! s:find_git_root()
+      return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+    endfunction
+  " }
 " }

@@ -41,7 +41,6 @@
     Plug 'godlygeek/tabular'
     Plug 'Shougo/deoplete.nvim', has('nvim') ? {} : { 'on': [], 'do': ':UpdateRemotePlugins' }
     Plug 'w0rp/ale'
-    Plug 'airblade/vim-rooter'
   " }
 
   " Snippets {

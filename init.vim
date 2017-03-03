@@ -174,7 +174,7 @@
 
 
     let g:UltiSnipsEditSplit="vertical"
-    set runtimepath^=~/.vim/UltiSnips/
+    let g:UltiSnipsSnippetDir="~/.vim/UltiSnips/"
   " }
 
   " Deoplete {

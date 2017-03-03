@@ -42,20 +42,6 @@
   " set it to the first line when editing a git commit message
   au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
-  " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-  " Restore cursor to file position in previous editing session
-  function! ResCur()
-    if line("'\"") <= line("$")
-      silent! normal! g`"
-      return 1
-    endif
-  endfunction
-
-  augroup resCur
-    autocmd!
-    autocmd BufWinEnter * call ResCur()
-  augroup END
-
   autocmd BufEnter * silent! lcd %:p:h " Automatically chdir for file
   
   " }
@@ -194,6 +180,8 @@
   " Deoplete {
     let g:deoplete#enable_at_startup = 1
 
+    " better complete popup
+    let completeopt="menuone,preview,noselect,noinsert"
 
     "" omnifuncs
     augroup omnifuncs

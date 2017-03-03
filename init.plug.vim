@@ -13,7 +13,6 @@
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'edkolev/tmuxline.vim'
-    Plug 'tpope/vim-fugitive'
     Plug 'mkitt/tabline.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
@@ -36,6 +35,7 @@
 
   " General Programming {
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     Plug 'scrooloose/nerdcommenter'
     Plug 'tpope/vim-commentary'
     Plug 'godlygeek/tabular'

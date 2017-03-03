@@ -10,37 +10,37 @@
 
   call plug#begin('~/.cpitt-vim/plugins')
   " General Plugins {
-    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline' "Cool looking status line
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'edkolev/tmuxline.vim'
-    Plug 'mkitt/tabline.vim'
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+    Plug 'edkolev/tmuxline.vim' " Keep tmux theme and vim theme in sync
+    Plug 'mkitt/tabline.vim' " Better tab format
+    Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim truecolor colorschemes
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
-    Plug 'rhysd/conflict-marker.vim'
-    Plug 'jiangmiao/auto-pairs'
+    Plug 'tpope/vim-surround' " surround text with char/s
+    Plug 'tpope/vim-repeat' " repeat plugin action with . aswell
     Plug 'terryma/vim-multiple-cursors'
-    Plug 'matchit.zip'
-    Plug 'mbbill/undotree'
-    Plug 'nathanaelkane/vim-indent-guides'
-    Plug 'mhinz/vim-signify'
-    Plug 'tpope/vim-abolish'
-    Plug 'osyo-manga/vim-over'
-    Plug 'vim-scripts/restore_view.vim'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
+    Plug 'mbbill/undotree' " Undo history viewer
+    Plug 'nathanaelkane/vim-indent-guides' " highlight indent depths
+    Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for swithing casing snakeCase->crs camel_case->crc MixedCase->crm)
+    Plug 'osyo-manga/vim-over' " Better command interaction
+    Plug 'vim-scripts/restore_view.vim' " restore cursor position and fold info
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy find files
+    Plug 'junegunn/fzf.vim' " fzf vun integration
   " }
 
   " General Programming {
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-    Plug 'scrooloose/nerdcommenter'
-    Plug 'tpope/vim-commentary'
-    Plug 'godlygeek/tabular'
-    Plug 'Shougo/deoplete.nvim', has('nvim') ? {} : { 'on': [], 'do': ':UpdateRemotePlugins' }
-    Plug 'w0rp/ale'
+    Plug 'matchit.zip' " use % to match more than single chars 
+    Plug 'jiangmiao/auto-pairs' " Automatically close quotes, brackets, ect
+    Plug 'editorconfig/editorconfig-vim' " respect .editorconfig
+    Plug 'tpope/vim-fugitive' " Useful git commands in vim
+    Plug 'airblade/vim-gitgutter' " Gutter diff signs git only
+    "Plug 'mhinz/vim-signify' " Gutter diff signs DISABLED In favor of
+    "git-gutter since I don't use any other vcs
+    Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
+    Plug 'scrooloose/nerdcommenter' " Easy comment toggling
+    Plug 'godlygeek/tabular' " align on characters
+    Plug 'Shougo/deoplete.nvim', has('nvim') ? {'do': ':UpdateRemotePlugins'} : { 'on': [] } " completion
+    Plug 'w0rp/ale', has('nvim') ? {}: {'on': []} " Async linting
   " }
 
   " Snippets {
@@ -50,17 +50,14 @@
 
   " Javascript Plugins {
     Plug 'elzr/vim-json'
-    Plug 'groenewege/vim-less'
-    Plug 'pangloss/vim-javascript'
-    Plug 'briancollins/vim-jst'
-    Plug 'isRuslan/vim-es6'
+    Plug 'pangloss/vim-javascript' " better Javascript support
+    Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     Plug 'mmozuras/snipmate-mocha'
-    Plug 'mxw/vim-jsx'
-    " Toggle react class and function definition, didn't work well consider removing
-    Plug 'mvolkmann/vim-react' 
-    Plug 'othree/jspc.vim'
+    Plug 'mxw/vim-jsx' " Better jsx support
+    Plug 'mvolkmann/vim-react' " Toggle react class and function definition, didn't work well consider removing
+    Plug 'othree/jspc.vim' " Javascript parameter completion
   " }
 
   " GoLang {
@@ -74,6 +71,10 @@
     Plug 'gorodinskiy/vim-coloresque'
     Plug 'tpope/vim-haml'
     Plug 'mattn/emmet-vim'
+  " }
+
+  " css {
+    Plug 'groenewege/vim-less' " syntax support for less
   " }
 
   " Misc {

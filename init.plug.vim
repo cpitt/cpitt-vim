@@ -66,7 +66,7 @@
 
   " Html Plugins {
     Plug 'bonsaiben/bootstrap-snippets'
-    Plug 'vim-scripts/HTML-AutoCloseTag'
+    Plug 'alvan/vim-closetag'
     Plug 'hail2u/vim-css3-syntax'
     Plug 'gorodinskiy/vim-coloresque'
     Plug 'tpope/vim-haml'

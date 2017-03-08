@@ -303,6 +303,10 @@
   " NerdCommentor {
     let g:NERDSpaceDelims = 1 " add space after comment char
   " }
+
+  " closetag{
+    let g:closetag_filenames = '*.html,*.xhtml,*.xml,*.js,*.jsx'
+  "}
 " }
 
 " Functions {

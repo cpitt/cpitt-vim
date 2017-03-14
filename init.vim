@@ -181,7 +181,7 @@
     let g:deoplete#enable_at_startup = 1
 
     " better complete popup
-    let completeopt="menuone,preview,noselect,noinsert"
+    set completeopt=menuone,preview,noselect,noinsert
 
     "" omnifuncs
     augroup omnifuncs

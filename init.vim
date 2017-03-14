@@ -200,6 +200,17 @@
     autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     " }
 
+  " deoplete-tern {
+    "Use deoplete.
+    let g:tern_request_timeout = 1
+    "let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+
+    " Use tern_for_vim.
+    let g:tern#command = ["tern"]
+    let g:tern#arguments = ["--persistent"]
+  " }
+
   " NerdTree {
     map <C-e> :NERDTreeToggle<CR>
     map <leader>e :NERDTreeFind<CR>
@@ -235,17 +246,6 @@
     nnoremap <silent> <leader>gi :Git add -p %<CR>
     nnoremap <silent> <leader>gg :SignifyToggle<CR>
     " }
-
-  " deoplete-tern {
-    "Use deoplete.
-    let g:tern_request_timeout = 1
-    "let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-
-
-    " Use tern_for_vim.
-    let g:tern#command = ["tern"]
-    let g:tern#arguments = ["--persistent"]
-  " }
 
   " jsx {
     let g:jsx_ext_required = 0 " Allow jsx in js files
@@ -307,6 +307,14 @@
   " closetag{
     let g:closetag_filenames = '*.html,*.xhtml,*.xml,*.js,*.jsx'
   "}
+  
+  " hardmode {
+    let g:hardtime_showmsg = 1
+    let g:hardtime_showmsg = 1
+    let g:hardtime_maxcount = 2
+    nnoremap <leader>h <Esc>:call HardTimeToggle()<CR>
+  " }
+
 " }
 
 " Functions {

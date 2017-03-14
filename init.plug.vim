@@ -79,6 +79,7 @@
 
   " Misc {
     Plug 'tpope/vim-markdown'
+    Plug 'takac/vim-hardtime'
   " }
 
   call plug#end()

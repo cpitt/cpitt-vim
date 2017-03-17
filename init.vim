@@ -193,6 +193,10 @@
       autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     augroup end
 
+    if !exists('g:deoplete#omni#input_patterns')
+      let g:deoplete#omni#input_patterns = {}
+    endif
+
     " deoplete tab-complete
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

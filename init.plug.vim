@@ -21,11 +21,11 @@
     Plug 'terryma/vim-multiple-cursors'
     Plug 'mbbill/undotree' " Undo history viewer
     Plug 'nathanaelkane/vim-indent-guides' " highlight indent depths
-    Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for swithing casing snakeCase->crs camel_case->crc MixedCase->crm)
+    Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for switching casing snakeCase->crs camel_case->crc MixedCase->crm)
     Plug 'osyo-manga/vim-over' " Better command interaction
     Plug 'vim-scripts/restore_view.vim' " restore cursor position and fold info
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy find files
-    Plug 'junegunn/fzf.vim' " fzf vun integration
+    Plug 'junegunn/fzf.vim' " fzf integration
   " }
 
   " General Programming {
@@ -34,8 +34,6 @@
     Plug 'editorconfig/editorconfig-vim' " respect .editorconfig
     Plug 'tpope/vim-fugitive' " Useful git commands in vim
     Plug 'airblade/vim-gitgutter' " Gutter diff signs git only
-    "Plug 'mhinz/vim-signify' " Gutter diff signs DISABLED In favor of
-    "git-gutter since I don't use any other vcs
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
     Plug 'scrooloose/nerdcommenter' " Easy comment toggling
     Plug 'godlygeek/tabular' " align on characters
@@ -67,14 +65,13 @@
   " Html Plugins {
     Plug 'bonsaiben/bootstrap-snippets'
     Plug 'alvan/vim-closetag'
-    Plug 'hail2u/vim-css3-syntax'
-    Plug 'gorodinskiy/vim-coloresque'
     Plug 'tpope/vim-haml'
-    Plug 'mattn/emmet-vim'
   " }
 
   " css {
     Plug 'groenewege/vim-less' " syntax support for less
+    Plug 'hail2u/vim-css3-syntax'
+    Plug 'gorodinskiy/vim-coloresque' " Highlight colors
   " }
 
   " Misc {

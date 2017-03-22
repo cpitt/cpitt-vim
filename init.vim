@@ -311,13 +311,17 @@
   " closetag{
     let g:closetag_filenames = '*.html,*.xhtml,*.xml,*.js,*.jsx'
   "}
-  
+
   " hardmode {
     let g:hardtime_showmsg = 1
     let g:hardtime_showmsg = 1
     let g:hardtime_maxcount = 2
     let g:hardtime_ignore_buffer_patterns = [  "NERD.*" ]
     nnoremap <leader>h <Esc>:call HardTimeToggle()<CR>
+  " }
+
+  " json {
+    let g:vim_json_syntax_conceal = 0
   " }
 
 " }

@@ -60,6 +60,7 @@
 
   " GoLang {
     Plug 'fatih/vim-go'
+    Plug 'zchee/deoplete-go', {'do': 'make'}
   " }
 
   " Html Plugins {

@@ -13,7 +13,6 @@
     Plug 'vim-airline/vim-airline' "Cool looking status line
     Plug 'vim-airline/vim-airline-themes'
     Plug 'edkolev/tmuxline.vim' " Keep tmux theme and vim theme in sync
-    Plug 'mkitt/tabline.vim' " Better tab format
     Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim truecolor colorschemes
     Plug 'tpope/vim-surround' " surround text with char/s

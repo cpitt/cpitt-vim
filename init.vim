@@ -110,10 +110,7 @@
     set termguicolors
   endif 
 
-
   colorscheme base16-tomorrow-night
-  let g:airline_theme="base16_tomorrow"
-  let g:airline_powerline_fonts=1
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode
@@ -165,6 +162,12 @@
   " }
 
 " Plugin configuration {
+  " Airline {
+    let g:airline_theme="base16_tomorrow"
+    let g:airline_powerline_fonts=1
+    let g:airline#extensions#tabline#enabled=1
+  " }
+
   " Ultisnips {
     " remap Ultisnips for compatibility for deoplete tab
     let g:UltiSnipsExpandTrigger = '<C-j>'

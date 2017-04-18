@@ -17,7 +17,6 @@
     Plug 'chriskempson/base16-vim' "vim truecolor colorschemes
     Plug 'tpope/vim-surround' " surround text with char/s
     Plug 'tpope/vim-repeat' " repeat plugin action with . aswell
-    Plug 'terryma/vim-multiple-cursors'
     Plug 'mbbill/undotree' " Undo history viewer
     Plug 'nathanaelkane/vim-indent-guides' " highlight indent depths
     Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for switching casing snakeCase->crs camel_case->crc MixedCase->crm)
@@ -46,7 +45,7 @@
   " }
 
   " Javascript Plugins {
-    Plug 'elzr/vim-json'
+      Plug 'elzr/vim-json'
     Plug 'pangloss/vim-javascript' " better Javascript support
     Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }

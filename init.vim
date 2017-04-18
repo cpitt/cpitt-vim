@@ -12,7 +12,6 @@
 
 " General {
   set nocompatible
-  set background=dark         " Assume a dark background
   " Toggle background
   map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 

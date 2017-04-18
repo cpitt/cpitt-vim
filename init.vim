@@ -286,7 +286,7 @@
     nnoremap <silent> <C-p> :ProjectFiles<cr>
 
     " <M-p> for open buffers
-    nnoremap <silent> <C-M-S-p> :Buffers<cr>
+    nnoremap <silent> <C-b> :Buffers<cr>
 
     " <M-S-p> for MRU
     nnoremap <silent> <M-S-p> :History<cr>

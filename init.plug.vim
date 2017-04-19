@@ -33,7 +33,7 @@
     Plug 'tpope/vim-fugitive' " Useful git commands in vim
     Plug 'airblade/vim-gitgutter' " Gutter diff signs git only
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
-    Plug 'scrooloose/nerdcommenter' " Easy comment toggling
+    Plug 'tpope/vim-commentary' " easy comment toggling
     Plug 'godlygeek/tabular' " align on characters
     Plug 'Shougo/deoplete.nvim', has('nvim') ? {'do': ':UpdateRemotePlugins'} : { 'on': [] } " completion
     Plug 'w0rp/ale', has('nvim') ? {}: {'on': []} " Async linting

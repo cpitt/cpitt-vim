@@ -27,7 +27,6 @@
   " }
 
   " General Programming {
-    Plug 'matchit.zip' " use % to match more than single chars 
     Plug 'jiangmiao/auto-pairs' " Automatically close quotes, brackets, ect
     Plug 'editorconfig/editorconfig-vim' " respect .editorconfig
     Plug 'tpope/vim-fugitive' " Useful git commands in vim

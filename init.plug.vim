@@ -44,13 +44,14 @@
   " }
 
   " Javascript Plugins {
-      Plug 'elzr/vim-json'
+    Plug 'elzr/vim-json'
     Plug 'pangloss/vim-javascript' " better Javascript support
     Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     Plug 'mmozuras/snipmate-mocha'
     Plug 'mxw/vim-jsx' " Better jsx support
+    Plug 'greg-js/vim-react-es6-snippets' " React snippets
     Plug 'mvolkmann/vim-react' " Toggle react class and function definition, didn't work well consider removing
     Plug 'othree/jspc.vim' " Javascript parameter completion
   " }

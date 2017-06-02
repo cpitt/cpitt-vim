@@ -1,3 +1,5 @@
+set encoding=utf-8
+scriptencoding utf-8
 " vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " ____     ____    ______  ______  ______          __  __  ______
 "/\  _`\  /\  _`\ /\__  _\/\__  _\/\__  _\        /\ \/\ \/\__  _\   /'\_/`\
@@ -11,9 +13,8 @@
 " Created as I transitioned from vim to neovim. May not be compatible with vim
 
 " General {
-  set nocompatible
   " Toggle background
-  map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+  map <Leader>bg :let &background = ( &background == 'dark'? 'light' : 'dark' )<CR>
 
   filetype plugin indent on   " Automatically detect file types.
   syntax on                   " Syntax highlighting
@@ -39,14 +40,16 @@
 
   " Instead of reverting the cursor to the last position in the buffer, we
   " set it to the first line when editing a git commit message
-  au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+  augroup general
+    autocmd!
+    autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    autocmd BufEnter * silent! lcd %:p:h " Automatically chdir for file
+  augroup END
 
-  autocmd BufEnter * silent! lcd %:p:h " Automatically chdir for file
-  
   " }
 
 " init vim-plug {
-  if filereadable(expand("~/.cpitt-vim/init.plug.vim"))
+  if filereadable(expand('~/.cpitt-vim/init.plug.vim'))
     source ~/.cpitt-vim/init.plug.vim
   endif
 " }
@@ -55,10 +58,10 @@
   " The default leader is '\', but many people prefer ',' as it's in a standard
   " location. To override this behavior and set it back to '\' (or any other
   " character) add the following to your .vimrc.before.local file:
-  let mapleader = ','
+  let g:mapleader = ','
 
   " Accidental shift key fixes
-  if has("user_commands")
+  if has('user_commands')
     command! -bang -nargs=* -complete=file E e<bang> <args>
     command! -bang -nargs=* -complete=file W w<bang> <args>
     command! -bang -nargs=* -complete=file Wq wq<bang> <args>
@@ -99,15 +102,17 @@
   set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
   " Remove trailing whitespaces and ^M chars
   " To disable the stripping of whitespace, add the following to your
-  autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-  "autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  augroup format
+    autocmd!
+    autocmd FileType c,cpp,java,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql,vim autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+  augroup END
 " }
 
 " Vim UI {
   " Set termguicolors if neovim
   if has('termguicolors')
     set termguicolors
-  endif 
+  endif
 
   colorscheme base16-tomorrow-night
 
@@ -116,7 +121,7 @@
   set cursorline                  " Highlight current line
 
   " set background to transparent
-  highlight Normal guibg=NONE ctermbg=NONE 
+  highlight Normal guibg=NONE ctermbg=NONE
   highlight clear SignColumn      " SignColumn should match background
   highlight clear LineNr          " Current line number row will have same background color in relative mode
 
@@ -162,7 +167,7 @@
 
 " Plugin configuration {
   " Airline {
-    let g:airline_theme="base16_tomorrow"
+    let g:airline_theme='base16_tomorrow'
     let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -188,8 +193,8 @@
     let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 
-    let g:UltiSnipsEditSplit="vertical"
-    let g:UltiSnipsSnippetDir="~/.vim/UltiSnips/"
+    let g:UltiSnipsEditSplit='vertical'
+    let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
 
   " Deoplete {
@@ -215,8 +220,6 @@
     " deoplete tab-complete
     inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     " }
 
   " deoplete-tern {
@@ -226,8 +229,8 @@
 
 
     " Use tern_for_vim.
-    let g:tern#command = ["tern"]
-    let g:tern#arguments = ["--persistent"]
+    let g:tern#command = ['tern']
+    let g:tern#arguments = ['--persistent']
   " }
 
   " NerdTree {
@@ -235,13 +238,13 @@
     map <leader>e :NERDTreeFind<CR>
     nmap <leader>nt :NERDTreeFind<CR>
 
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-    let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeMouseMode=2
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
+    let g:NERDTreeShowBookmarks=1
+    let g:NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+    let g:NERDTreeChDirMode=0
+    let g:NERDTreeQuitOnOpen=1
+    let g:NERDTreeMouseMode=2
+    let g:NERDTreeShowHidden=1
+    let g:NERDTreeKeepTreeInNewTab=1
     let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
@@ -267,14 +270,16 @@
     " }
 
   " jsx {
-    let g:jsx_ext_required = 1 " Allow jsx in js files
+    let g:jsx_ext_required = 0 " Allow jsx in js files
   " }
 
   " Ale linter {
-    let g:ale_sign_error = "✖"
+    let g:ale_sign_error = '✖'
     let g:ale_sign_warning = '⚠'
     highlight ALEErrorSign guifg=Red ctermfg=Red
     highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
+    let g:ale_fixers = { 'javascript': ['eslint'] }
+    let g:ale_fix_on_save = 1
   " }
 
   " fzf {
@@ -331,7 +336,7 @@
     let g:hardtime_showmsg = 1
     let g:hardtime_showmsg = 1
     let g:hardtime_maxcount = 2
-    let g:hardtime_ignore_buffer_patterns = [  "NERD.*" ]
+    let g:hardtime_ignore_buffer_patterns = [  'NERD.*' ]
     nnoremap <leader>h <Esc>:call HardTimeToggle()<CR>
   " }
 
@@ -345,48 +350,48 @@
   " Strip whitespace {
   function! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
+    let l:_s=@/
+    let l:l = line('.')
+    let l:c = col('.')
     " do the business:
-    %s/\s\+$//e
+    silent! execute '%s/\s\+$//e'
     " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+    let @/=l:_s
+    call cursor(l:l, l:c)
   endfunction
   " }
 
   " Initialize directories {
   function! InitializeDirectories()
-    let parent = $HOME
-    let prefix = 'vim'
-    let dir_list = {
+    let l:parent = $HOME
+    let l:prefix = 'vim'
+    let l:dir_list = {
           \ 'backup': 'backupdir',
           \ 'views': 'viewdir',
           \ 'swap': 'directory' }
 
     if has('persistent_undo')
-      let dir_list['undo'] = 'undodir'
+      let l:dir_list['undo'] = 'undodir'
     endif
 
     " To specify a different directory in which to place the vimbackup,
     " vimviews, vimundo, and vimswap files/directories, add the following to
     " your .vimrc.before.local file:
-    let common_dir = parent . '/.' . prefix
+    let l:common_dir = l:parent . '/.' . l:prefix
 
-    for [dirname, settingname] in items(dir_list)
-      let directory = common_dir . dirname . '/'
-      if exists("*mkdir")
-        if !isdirectory(directory)
-          call mkdir(directory)
+    for [l:dirname, l:settingname] in items(l:dir_list)
+      let l:directory = l:common_dir . l:dirname . '/'
+      if exists('*mkdir')
+        if !isdirectory(l:directory)
+          call mkdir(l:directory)
         endif
       endif
-      if !isdirectory(directory)
-        echo "Warning: Unable to create backup directory: " . directory
-        echo "Try: mkdir -p " . directory
+      if !isdirectory(l:directory)
+        echo 'Warning: Unable to create backup directory: ' . l:directory
+        echo 'Try: mkdir -p ' . l:directory
       else
-        let directory = substitute(directory, " ", "\\\\ ", "g")
-        exec "set " . settingname . "=" . directory
+        let l:directory = substitute(l:directory, ' ', '\\\\ ', 'g')
+        exec 'set ' . l:settingname . '=' . l:directory
       endif
     endfor
   endfunction
@@ -401,7 +406,7 @@
 " }
 
 " Use local vimrc if available {
-    if filereadable(expand("~/.vimrc.local"))
+    if filereadable(expand('~/.vimrc.local'))
         source ~/.vimrc.local
     endif
 " }

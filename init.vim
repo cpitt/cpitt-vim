@@ -233,6 +233,7 @@ scriptencoding utf-8
     " Use tern_for_vim.
     let g:tern#command = ['tern']
     let g:tern#arguments = ['--persistent']
+    let g:tern#filetypes = ['javascript', 'jsx', 'javascript.jsx']
   " }
 
   " NerdTree {

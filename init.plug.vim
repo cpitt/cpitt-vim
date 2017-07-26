@@ -18,6 +18,7 @@
     Plug 'edkolev/tmuxline.vim' " Keep tmux theme and vim theme in sync
     Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim 16color colorschemes
+    Plug 'morhetz/gruvbox' " Gruvbox theme for vim
     Plug 'tpope/vim-surround' " surround text with char/s
     Plug 'tpope/vim-repeat' " repeat plugin action with . aswell
     Plug 'mbbill/undotree' " Undo history viewer

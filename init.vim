@@ -114,7 +114,9 @@ scriptencoding utf-8
     set termguicolors
   endif
 
-  colorscheme base16-tomorrow-night
+  set background=dark
+  colorscheme gruvbox
+  let g:gruvbox_contrast_dark='hard'
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode

@@ -281,7 +281,8 @@ scriptencoding utf-8
     let g:ale_sign_warning = '⚠'
     highlight ALEErrorSign guifg=Red ctermfg=Red
     highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
-    let g:ale_fixers = { 'javascript': ['eslint'] }
+    let g:ale_fixers = { 'javascript': ['eslint', 'prettier'] }
+    let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
     let g:ale_fix_on_save = 1
   " }
 

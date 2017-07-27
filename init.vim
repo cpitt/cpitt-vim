@@ -146,6 +146,7 @@ scriptencoding utf-8
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
   endif
 
+  set lazyredraw                  " Speeds up redraw a bit
   set backspace=indent,eol,start  " Backspace for dummies
   set linespace=0                 " No extra spaces between rows
   set number                      " Line numbers on

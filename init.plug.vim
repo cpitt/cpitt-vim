@@ -15,6 +15,8 @@
   " General Plugins {
     Plug 'vim-airline/vim-airline' "Cool looking status line
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'edkolev/tmuxline.vim' " Keep tmux theme and vim theme in sync
     Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim 16color colorschemes

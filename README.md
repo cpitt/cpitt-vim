@@ -10,3 +10,5 @@ For full list of plugins refer to [init.plug.vim](./init.plug.vim)
 ### Plugin Manager
 Plugins are managed by [vim-plug](https://github.com/junegunn/vim-plug)
 
+### External dependencies
+* Nerd font

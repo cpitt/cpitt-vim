@@ -115,8 +115,8 @@ scriptencoding utf-8
   endif
 
   set background=dark
+  let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
-  let g:gruvbox_contrast_dark='hard'
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode

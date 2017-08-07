@@ -15,8 +15,8 @@
   " General Plugins {
     Plug 'vim-airline/vim-airline' "Cool looking status line
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ryanoasis/vim-devicons' " Filetype Icons for nerdtree
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight' " Highlight file icons different colors
     Plug 'edkolev/tmuxline.vim' " Keep tmux theme and vim theme in sync
     Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim 16color colorschemes
@@ -81,6 +81,10 @@
 
   " Misc {
     Plug 'takac/vim-hardtime'
+  " }
+
+  " Markdown {
+    Plug 'dkarter/bullets.vim' " Add bullet support for markdown
   " }
 
   call plug#end()

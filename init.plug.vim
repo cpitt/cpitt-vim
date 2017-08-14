@@ -85,6 +85,7 @@
 
   " Markdown {
     Plug 'dkarter/bullets.vim' " Add bullet support for markdown
+    Plug 'tpope/vim-markdown' " Upstream markdown plugin
   " }
 
   call plug#end()

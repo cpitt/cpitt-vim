@@ -37,6 +37,7 @@ scriptencoding utf-8
   set iskeyword-=.                    " '.' is an end of word designator
   set iskeyword-=#                    " '#' is an end of word designator
   set iskeyword-=-                    " '-' is an end of word designator
+  set iskeyword-=_                    " '_' is an end of word designator
 
   " Instead of reverting the cursor to the last position in the buffer, we
   " set it to the first line when editing a git commit message

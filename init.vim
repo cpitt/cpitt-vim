@@ -359,6 +359,10 @@ scriptencoding utf-8
     nnoremap <Leader>u :UndotreeToggle<cr>
   " }
 
+  " vim-over {
+    cabbrev %s OverCommandLine<cr>%s
+    cabbrev '<,'>s OverCommandLine<cr>'<,'>
+  " }
 " }
 
 " Functions {

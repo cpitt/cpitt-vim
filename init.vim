@@ -363,6 +363,24 @@ scriptencoding utf-8
     cabbrev %s OverCommandLine<cr>%s
     cabbrev '<,'>s OverCommandLine<cr>'<,'>
   " }
+
+  " {
+    map p <Plug>(miniyank-autoput)
+    map P <Plug>(miniyank-autoPut)
+
+    map <leader>p <Plug>(miniyank-startput)
+    map <leader>P <Plug>(miniyank-startPut)
+
+    map <M-p> <Plug>(miniyank-cycle)
+
+    map <Leader>c <Plug>(miniyank-tochar)
+    map <Leader>l <Plug>(miniyank-toline)
+    map <Leader>b <Plug>(miniyank-toblock)
+  " }
+
+  " autopairs{
+    let g:AutoPairsShortcutToggle = ''
+  " }
 " }
 
 " Functions {

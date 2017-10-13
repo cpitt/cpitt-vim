@@ -44,7 +44,6 @@ scriptencoding utf-8
   augroup general
     autocmd!
     autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-    autocmd BufEnter * silent! lcd %:p:h " Automatically chdir for file
   augroup END
 
   " }

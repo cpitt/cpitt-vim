@@ -179,8 +179,8 @@ scriptencoding utf-8
     let g:airline#extensions#tabline#show_buffers=0
     let g:airline#extensions#tabline#tab_nr_type = 1
     let g:airline#extensions#tabline#show_close_button = 0
-    let g:airline#extensions#tabline#buffer_nr_show = 1
-    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#tabline#fnamecollapse = 0
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3

@@ -30,6 +30,7 @@
     Plug 'bfredl/nvim-miniyank'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " fuzzy find files
     Plug 'junegunn/fzf.vim' " fzf integration
+    Plug 'skywind3000/asyncrun.vim' " self explanatory
   " }
 
   " General Programming {

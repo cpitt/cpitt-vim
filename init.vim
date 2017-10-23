@@ -89,7 +89,7 @@ scriptencoding utf-8
   nmap <silent> <leader>/ :nohlsearch<CR>
 
   " Agressively retrain me
-  inoremap <C-c> <C-o>:!say "Start using Ctrl-bracket dumb ass" <CR><CR><C-[>
+  inoremap <C-c> <C-o>:AsyncRun say "Start using Ctrl-bracket dumb ass" <CR><C-[>
 " }
 
 " Formatting {

@@ -289,7 +289,7 @@ scriptencoding utf-8
     highlight ALEErrorSign guifg=Red ctermfg=Red
     highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
     let g:ale_fixers = { 'javascript': ['prettier', 'eslint'] }
-    let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+    let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es6'
     let g:ale_fix_on_save = 1
   " }
 
@@ -360,8 +360,8 @@ scriptencoding utf-8
   " }
 
   " vim-over {
-    cabbrev %s OverCommandLine<cr>%s
-    cabbrev '<,'>s OverCommandLine<cr>'<,'>
+    cabbrev %s OverCommandLine<CR>%s
+    cabbrev '<,'>s OverCommandLine<CR>'<,'>s
   " }
 
   " {

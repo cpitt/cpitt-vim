@@ -87,6 +87,7 @@
 
   " Misc {
     Plug 'takac/vim-hardtime'
+    Plug 'ekalinin/Dockerfile.vim'
   " }
 
   " Markdown {

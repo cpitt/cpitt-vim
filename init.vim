@@ -296,7 +296,7 @@ scriptencoding utf-8
   " fzf {
     command! ProjectFiles execute 'Files' s:find_git_root()
 
-    let g:fzf_layout = { 'down': '~15%' }
+    let g:fzf_layout = { 'window': '10split enew' }
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
     " <C-p> or <C-t> to search files
     nnoremap <silent> <C-p> :ProjectFiles<cr>

@@ -294,12 +294,26 @@ scriptencoding utf-8
   " }
 
   " fzf {
-    command! ProjectFiles execute 'Files' s:find_git_root()
 
     let g:fzf_layout = { 'window': '10split enew' }
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+    let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+    function! s:build_quickfix_list(lines)
+      call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+      copen
+      cc
+    endfunction
+
+    let g:fzf_action = {
+          \ 'ctrl-q': function('s:build_quickfix_list'),
+          \ 'ctrl-t': 'tab split',
+          \ 'ctrl-x': 'split',
+          \ 'ctrl-v': 'vsplit' }
+
+
     " <C-p> or <C-t> to search files
-    nnoremap <silent> <C-p> :ProjectFiles<cr>
+    nnoremap <silent> <C-p> :Files<cr>
 
     " <M-p> for open buffers
     nnoremap <silent> <C-b> :Buffers<cr>

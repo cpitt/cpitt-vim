@@ -60,6 +60,7 @@
   " Javascript Plugins {
     Plug 'elzr/vim-json'
     Plug 'pangloss/vim-javascript' " better Javascript support
+    Plug 'othree/yajs.vim'
     Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     Plug 'roxma/nvim-cm-tern',  {'do': 'yarn'}

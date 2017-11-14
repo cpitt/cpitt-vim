@@ -318,7 +318,6 @@ scriptencoding utf-8
     command! QHist call fzf#vim#search_history()
     nnoremap q/ :QHist<CR>
 
-    " command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
     " Customize fzf colors to match your color scheme
     let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
@@ -380,6 +379,12 @@ scriptencoding utf-8
 
   " autopairs{
     let g:AutoPairsShortcutToggle = ''
+  " }
+  " Vim Rooter {
+    " Trigger Rooter even when file isn' opened
+    augroup vimrc_rooter
+      autocmd VimEnter * :Rooter
+    augroup END
   " }
 " }
 

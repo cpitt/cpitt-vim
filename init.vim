@@ -117,18 +117,18 @@ scriptencoding utf-8
     set termguicolors
   endif
 
+  let g:one_allow_italics=1 " I love italic for comments
   set background=dark
-  let g:gruvbox_contrast_dark = 'hard'
-  colorscheme gruvbox
+  color one
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode
   set cursorline                  " Highlight current line
 
   " set background to transparent
-  highlight Normal guibg=NONE ctermbg=NONE
-  highlight clear SignColumn      " SignColumn should match background
-  highlight clear LineNr          " Current line number row will have same background color in relative mode
+  " highlight Normal guibg=NONE ctermbg=NONE
+  " highlight clear SignColumn      " SignColumn should match background
+  " highlight clear LineNr          " Current line number row will have same background color in relative mode
 
   if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -173,7 +173,7 @@ scriptencoding utf-8
 
 " Plugin configuration {
   " Airline {
-    let g:airline_theme='base16_tomorrow'
+    let g:airline_theme='one'
     let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#show_buffers=0

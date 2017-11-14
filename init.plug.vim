@@ -21,6 +21,7 @@
     Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim 16color colorschemes
     Plug 'morhetz/gruvbox' " Gruvbox theme for vim
+    Plug 'rakr/vim-one' " one colors
     Plug 'tpope/vim-repeat' " repeat plugin action with . aswell
     Plug 'nathanaelkane/vim-indent-guides' " highlight indent depths
     Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for switching casing snakeCase->crs camel_case->crc MixedCase->crm)

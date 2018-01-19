@@ -32,6 +32,7 @@
     Plug 'junegunn/fzf.vim' " fzf integration
     Plug 'skywind3000/asyncrun.vim' " self explanatory
     Plug 'airblade/vim-rooter'
+    Plug 'wellle/targets.vim'
   " }
 
   " General Programming {

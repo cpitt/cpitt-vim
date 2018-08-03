@@ -206,43 +206,35 @@ scriptencoding utf-8
     let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
 
-  " Deoplete {
-    let g:deoplete#enable_at_startup = 1
-
-    " better complete popup
-    set completeopt=menuone,preview,noselect,noinsert
-
-    "" omnifuncs
-    augroup omnifuncs
-      autocmd!
-      autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-      autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-      autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    augroup end
-
-    if !exists('g:deoplete#omni#input_patterns')
-      let g:deoplete#omni#input_patterns = {}
-    endif
-
-    " deoplete tab-complete
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    " }
-
-  " deoplete-tern {
-    "Use deoplete.
-    let g:tern_request_timeout = 1
-    "let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-
-
-    " Use tern_for_vim.
+    " Use tern_for_vim. {
     let g:tern#command = ['tern']
     let g:tern#arguments = ['--persistent']
     let g:tern#filetypes = ['javascript', 'jsx', 'javascript.jsx']
   " }
 
+  "  ncm2 {
+    " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+    " found' messages
+    set shortmess+=c
+
+    " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+    inoremap <c-c> <ESC>
+
+    " When the <Enter> key is pressed while the popup menu is visible, it only
+    " hides the menu. Use this mapping to close the menu and also start a new
+    " line.
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+    " Use <TAB> to select the popup menu:
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
+  "  }
+  "  vim Monster {
+    let g:monster#completion#backend = 'solargraph'
+    " }
   " NerdTree {
     map <C-e> :NERDTreeToggle<CR>
     map <leader>e :NERDTreeFind<CR>
@@ -288,7 +280,8 @@ scriptencoding utf-8
     let g:ale_sign_warning = '⚠'
     highlight ALEErrorSign guifg=Red ctermfg=Red
     highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
-    let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint'] }
+    let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint'],
+          \ 'typescript': ['prettier', 'tslint'] }
     let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_fix_on_save = 1
   " }
@@ -400,7 +393,9 @@ scriptencoding utf-8
       autocmd VimEnter * :Rooter
     augroup END
   " }
-" }
+  " markdown {
+    let g:markdown_fenced_languages = ['cpp', 'ruby', 'json', 'javascript', 'go', 'typescript']
+  " }
 
 " Functions {
   " Strip whitespace {

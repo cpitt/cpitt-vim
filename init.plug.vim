@@ -45,33 +45,58 @@
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
     Plug 'tomtom/tcomment_vim'
     Plug 'godlygeek/tabular' " align on characters
-    Plug 'roxma/nvim-completion-manager' " completion
+    Plug 'ncm2/ncm2'
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-ultisnips'
+    Plug 'ncm2/ncm2-github'
+    Plug 'ncm2/ncm2-markdown-subscope'
+    Plug 'roxma/nvim-yarp' " Required by ncm2
     Plug 'roxma/vim-hug-neovim-rpc', !has('nvim') ? {} : {'on': []}
     Plug 'w0rp/ale', has('nvim') ? {}: {'on': []} " Async linting
+  " }
+  "
+  " vimscript {
+    Plug 'ncm2/ncm2-vim'
   " }
 
   " Snippets {
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    Plug 'epilande/vim-react-snippets'
+    Plug 'cpitt/vim-react-snippets'
     Plug 'mmozuras/snipmate-mocha'
     Plug 'bonsaiben/bootstrap-snippets'
   " }
 
   " Javascript Plugins {
     Plug 'elzr/vim-json'
+    Plug 'Quramy/vim-js-pretty-template'
     Plug 'pangloss/vim-javascript' " better Javascript support
     Plug 'othree/yajs.vim'
     Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
-    Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-    Plug 'roxma/nvim-cm-tern',  {'do': 'yarn'}
+    Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
+    Plug 'ncm2/ncm2-tern', { 'do': 'yarn' }
     Plug 'mxw/vim-jsx' " Better jsx support
     Plug 'mvolkmann/vim-react' " Toggle react class and function definition, didn't work well consider removing
     Plug 'othree/jspc.vim' " Javascript parameter completion
+    Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
+  " }
+  "  TypeScript {
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'leafgarland/typescript-vim', {'do': ':UpdateRemotePlugins'}
+    " Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins'}
+  "  }
+
+  " Ruby {
+    " Plug 'vim-ruby/vim-ruby'
+    Plug 'roxma/vim-ruby'
+    Plug 'osyo-manga/vim-monster', {'do': 'gem install solargraph'}
+    Plug 'tpope/vim-rails'
   " }
 
   " GoLang {
     Plug 'fatih/vim-go'
+    Plug 'ncm2/ncm2-go'
   " }
 
   " Html Plugins {
@@ -94,6 +119,7 @@
   " Markdown {
     Plug 'dkarter/bullets.vim' " Add bullet support for markdown
     Plug 'tpope/vim-markdown' " Upstream markdown plugin
+    Plug 'rhysd/vim-gfm-syntax' " Add gh flavored markdown support
   " }
 
   call plug#end()

@@ -13,9 +13,6 @@ scriptencoding utf-8
 " Created as I transitioned from vim to neovim. May not be compatible with vim
 
 " General {
-  " Toggle background
-  map <Leader>bg :let &background = ( &background == 'dark'? 'light' : 'dark' )<CR>
-
   filetype plugin indent on   " Automatically detect file types.
   syntax on                   " Syntax highlighting
 
@@ -38,15 +35,6 @@ scriptencoding utf-8
   set iskeyword-=#                    " '#' is an end of word designator
   set iskeyword-=-                    " '-' is an end of word designator
   set iskeyword-=_                    " '_' is an end of word designator
-
-  " Instead of reverting the cursor to the last position in the buffer, we
-  " set it to the first line when editing a git commit message
-  augroup general
-    autocmd!
-    autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-  augroup END
-
-  " }
 
 " init vim-plug {
   if filereadable(expand('~/.cpitt-vim/init.plug.vim'))
@@ -87,10 +75,6 @@ scriptencoding utf-8
 
   " Clear search
   nmap <silent> <leader>/ :nohlsearch<CR>
-
-  " Agressively retrain me
-  inoremap <C-c> <C-o>:AsyncRun say "Start using Ctrl-bracket dumb ass" <CR><C-[>
-" }
 
 " Formatting {
   set nowrap                      " Do not wrap long lines
@@ -206,12 +190,6 @@ scriptencoding utf-8
     let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
 
-    " Use tern_for_vim. {
-    let g:tern#command = ['tern']
-    let g:tern#arguments = ['--persistent']
-    let g:tern#filetypes = ['javascript', 'jsx', 'javascript.jsx']
-  " }
-
   "  ncm2 {
     " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
     " found' messages
@@ -230,7 +208,8 @@ scriptencoding utf-8
     inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
     autocmd BufEnter * call ncm2#enable_for_buffer()
-    set completeopt=noinsert,menuone,noselect
+    au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+    au User Ncm2PopupClose set completeopt=menuone
   "  }
   "  vim Monster {
     let g:monster#completion#backend = 'solargraph'
@@ -280,15 +259,12 @@ scriptencoding utf-8
     let g:ale_sign_warning = '⚠'
     highlight ALEErrorSign guifg=Red ctermfg=Red
     highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
-    let g:ale_fixers = { 'javascript': [ 'prettier', 'eslint'],
-          \ 'typescript': ['prettier', 'tslint'] }
-    let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_fix_on_save = 1
   " }
 
   " fzf {
 
-    let g:fzf_layout = { 'window': '10split enew' }
+    let g:fzf_layout = { 'down': '~20%' }
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
     let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
@@ -357,10 +333,6 @@ scriptencoding utf-8
     nnoremap <leader>h <Esc>:call HardTimeToggle()<CR>
   " }
 
-  " json {
-    let g:vim_json_syntax_conceal = 0
-  " }
-
   " undotree {
     nnoremap <Leader>u :UndotreeToggle<cr>
   " }
@@ -392,9 +364,6 @@ scriptencoding utf-8
     augroup vimrc_rooter
       autocmd VimEnter * :Rooter
     augroup END
-  " }
-  " markdown {
-    let g:markdown_fenced_languages = ['cpp', 'ruby', 'json', 'javascript', 'go', 'typescript']
   " }
 
 " Functions {

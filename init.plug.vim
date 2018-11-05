@@ -53,7 +53,11 @@
     Plug 'ncm2/ncm2-markdown-subscope'
     Plug 'roxma/nvim-yarp' " Required by ncm2
     Plug 'roxma/vim-hug-neovim-rpc', !has('nvim') ? {} : {'on': []}
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'ncm2/ncm2-vim-lsp'
     Plug 'w0rp/ale', has('nvim') ? {}: {'on': []} " Async linting
+    Plug 'tpope/vim-dotenv'
   " }
   "
   " vimscript {
@@ -77,14 +81,12 @@
     Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
     Plug 'ncm2/ncm2-tern', { 'do': 'yarn' }
     Plug 'mxw/vim-jsx' " Better jsx support
-    Plug 'mvolkmann/vim-react' " Toggle react class and function definition, didn't work well consider removing
-    Plug 'othree/jspc.vim' " Javascript parameter completion
+    Plug 'othree/jspc.vim', {'for': ['javascript']} " Javascript parameter completion
     Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
   " }
   "  TypeScript {
     Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'leafgarland/typescript-vim', {'do': ':UpdateRemotePlugins'}
-    " Plug 'mhartington/nvim-typescript', {'do': ':UpdateRemotePlugins'}
+    Plug 'ncm2/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': ':!/install.sh \| UpdateRemotePlugins' }
   "  }
 
   " Ruby {
@@ -107,8 +109,8 @@
   " css {
     Plug 'groenewege/vim-less' " syntax support for less
     Plug 'hail2u/vim-css3-syntax'
-    Plug 'calebeby/ncm-css' "completion
     Plug 'gorodinskiy/vim-coloresque' " Highlight colors
+    Plug 'ncm2/ncm2-cssomni'
   " }
 
   " Misc {

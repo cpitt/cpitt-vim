@@ -1,4 +1,3 @@
-JsPreTmpl html
 " syn clear foldBraces
 "
 nnoremap <leader>ti :TSImport<CR>

@@ -338,9 +338,9 @@ scriptencoding utf-8
   " }
 
   " vim-over {
-    cabbrev %s OverCommandLine<CR>%s
-    cabbrev '<,'>s OverCommandLine<CR>'<,'>s
-  " }
+    map <leader>s :OverCommandLine<CR> %s/
+    vmap <leader>s :OverCommandLine<CR> s/
+  "}
 
   " {
     map p <Plug>(miniyank-autoput)

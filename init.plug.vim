@@ -83,7 +83,8 @@
     Plug 'mxw/vim-jsx' " Better jsx support
     Plug 'othree/jspc.vim', {'for': ['javascript']} " Javascript parameter completion
     Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
-  " }
+    Plug 'posva/vim-vue' " Vue file syntax support
+    " }
   "  TypeScript {
     Plug 'HerringtonDarkholme/yats.vim'
     Plug 'ncm2/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': ':!/install.sh \| UpdateRemotePlugins' }

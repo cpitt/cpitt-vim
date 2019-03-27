@@ -2,9 +2,11 @@ let b:ale_linters = ['eslint']
 let b:ale_fixers = ['eslint']
 
 " Use tern_for_vim. {
-let b:tern#command = ['tern']
-let b:tern#arguments = ['--persistent']
-let b:tern#filetypes = ['javascript', 'jsx', 'javascript.jsx']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+let g:tern#filetypes = ['javascript', 'jsx', 'javascript.jsx']
+let b:tern_show_signature_in_pum=1
+let b:tern_show_argument_hints='on_hold'
 " }
 "
 let b:ale_javascript_prettier_use_local_config = 1

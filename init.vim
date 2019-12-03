@@ -190,120 +190,117 @@ scriptencoding utf-8
     let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
 
-  " "  ncm2 {
-  "   " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-  "   " found' messages
-  "   set shortmess+=c
-  "
-  "   " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-  "   inoremap <c-c> <ESC>
-  "
-  "   " When the <Enter> key is pressed while the popup menu is visible, it only
-  "   " hides the menu. Use this mapping to close the menu and also start a new
-  "   " line.
-  "   inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-  "
-  "   " Use <TAB> to select the popup menu:
-  "   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  "   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-  "
-  "   autocmd BufEnter * call ncm2#enable_for_buffer()
-  "   au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-  "   au User Ncm2PopupClose set completeopt=menuone
-  "  }
-  "  coc vimm {
-" if hidden is not set, TextEdit might fail.
-set hidden
+  "  coc.vim {
 
-" Some server have issues with backup files, see #649
-set nobackup
-set nowritebackup
+    let g:coc_global_extensions = [
+          \'coc-css',
+          \'coc-dictionary',
+          \'coc-docker',
+          \'coc-eslint',
+          \'coc-highlight',
+          \'coc-html',
+          \'coc-import-cost',
+          \'coc-json',
+          \'coc-marketplace',
+          \'coc-sh',
+          \'coc-snippets',
+          \'coc-tsserver',
+          \'coc-vetur',
+          \'coc-word',
+          \'coc-yaml',
+          \ ]
+    " if hidden is not set, TextEdit might fail.
+    set hidden
 
-" Better display for messages
-set cmdheight=2
+    " Some server have issues with backup files, see #649
+    set nobackup
+    set nowritebackup
 
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+    " Better display for messages
+    set cmdheight=2
 
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
+    " Smaller updatetime for CursorHold & CursorHoldI
+    set updatetime=300
 
-" always show signcolumns
-set signcolumn=yes
+    " don't give |ins-completion-menu| messages.
+    set shortmess+=c
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    " always show signcolumns
+    set signcolumn=yes
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+    " Use tab for trigger completion with characters ahead and navigate.
+    " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
 
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    " Use <c-space> for trigger completion.
+    inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+    " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+    " Use `[c` and `]c` for navigate diagnostics
+    nmap <silent> [c <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
 
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+    " Use K for show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+    function! s:show_documentation()
+      if &filetype == 'vim'
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
 
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+    " Remap for format selected region
+    vmap <leader>f  <Plug>(coc-format-selected)
+    nmap <leader>f  <Plug>(coc-format-selected)
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+    augroup mygroup
+      autocmd!
+      " Setup formatexpr specified filetype(s).
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+      " Update signature help on jump placeholder
+      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
 
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+    " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+    vmap <leader>a  <Plug>(coc-codeaction-selected)
+    nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
+    " Remap for do codeAction of current line
+    nmap <leader>ac  <Plug>(coc-codeaction)
+    " Fix autofix problem of current line
+    nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+    " Use `:Format` for format current buffer
+    command! -nargs=0 Format :call CocAction('format')
+
+    " Use `:Fold` for fold current buffer
+    command! -nargs=? Fold :call     CocAction('fold', <f-args>)
   "  }
   "  vim Monster {
     let g:monster#completion#backend = 'solargraph'
@@ -346,14 +343,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
   " jsx {
     let g:jsx_ext_required = 0 " Allow jsx in js files
-  " }
-
-  " Ale linter {
-    let g:ale_sign_error = '✖'
-    let g:ale_sign_warning = '⚠'
-    highlight ALEErrorSign guifg=Red ctermfg=Red
-    highlight ALEWarningSign guifg=Yellow ctermfg=Yellow
-    let g:ale_fix_on_save = 1
   " }
 
   " fzf {
@@ -436,7 +425,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
     vmap <leader>s :OverCommandLine<CR> s/
   "}
 
-  " {
+  " Miniyank {
     map p <Plug>(miniyank-autoput)
     map P <Plug>(miniyank-autoPut)
 

@@ -1,0 +1,43 @@
+{
+  "tsserver.log": "verbose",
+  "tsserver.enableJavascript": true,
+  "tsserver.npm": "/Users/cameron.pitt/.nvm/versions/node/v10.11.0/bin/npm",
+  "tsserver.disableAutomaticTypeAcquisition": false,
+  "typescript.suggest.autoImports": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascriptreact",
+    "vue",
+    "javascript",
+    "javascript.jsx"
+  ],
+  "eslint.enable": true,
+
+  "coc.source.word.priority": 1,
+  "coc.source.dictionary.priority": 2,
+  "yaml.customTags": [
+    "!Base64 mapping",
+    "!ImportValue mapping",
+    "!And sequence",
+    "!Equals sequence",
+    "!GetAtt sequence",
+    "!If sequence",
+    "!FindInMap sequence",
+    "!Join sequence",
+    "!Not sequence",
+    "!Or sequence",
+    "!Select sequence",
+    "!Sub sequence",
+    "!Split sequence",
+    "!Cidr sequence",
+    "!Ref scalar",
+    "!Sub scalar",
+    "!GetAZs scalar",
+    "!GetAtt scalar",
+    "!Condition scalar",
+    "!ImportValue scalar",
+    "!Cidr scalar"
+  ],
+  "yaml.validate": true
+}
+

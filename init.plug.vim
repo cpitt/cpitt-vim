@@ -45,23 +45,9 @@
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
     Plug 'tomtom/tcomment_vim'
     Plug 'godlygeek/tabular' " align on characters
-    Plug 'ncm2/ncm2'
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-ultisnips'
-    Plug 'ncm2/ncm2-github'
-    Plug 'ncm2/ncm2-markdown-subscope'
-    Plug 'roxma/nvim-yarp' " Required by ncm2
-    Plug 'roxma/vim-hug-neovim-rpc', !has('nvim') ? {} : {'on': []}
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'ncm2/ncm2-vim-lsp'
-    Plug 'w0rp/ale', has('nvim') ? {}: {'on': []} " Async linting
+
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'tpope/vim-dotenv'
-  " }
-  "
-  " vimscript {
-    Plug 'ncm2/ncm2-vim'
   " }
 
   " Snippets {
@@ -75,11 +61,10 @@
   " Javascript Plugins {
     Plug 'elzr/vim-json'
     Plug 'Quramy/vim-js-pretty-template'
-    Plug 'pangloss/vim-javascript' " better Javascript support
+    " Plug 'pangloss/vim-javascript' " better Javascript support
     Plug 'othree/yajs.vim'
-    Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
-    Plug 'ternjs/tern_for_vim', { 'do': 'yarn' }
-    Plug 'ncm2/ncm2-tern', { 'do': 'yarn' }
+    Plug 'othree/es.next.syntax.vim'
+    " Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'mxw/vim-jsx' " Better jsx support
     Plug 'othree/jspc.vim', {'for': ['javascript']} " Javascript parameter completion
     Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
@@ -87,7 +72,6 @@
     " }
   "  TypeScript {
     Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'ncm2/nvim-typescript', {'for': ['typescript', 'tsx'], 'do': ':!/install.sh \| UpdateRemotePlugins' }
   "  }
 
   " Ruby {
@@ -99,7 +83,6 @@
 
   " GoLang {
     Plug 'fatih/vim-go'
-    Plug 'ncm2/ncm2-go'
   " }
 
   " Html Plugins {
@@ -111,7 +94,6 @@
     Plug 'groenewege/vim-less' " syntax support for less
     Plug 'hail2u/vim-css3-syntax'
     Plug 'gorodinskiy/vim-coloresque' " Highlight colors
-    Plug 'ncm2/ncm2-cssomni'
   " }
 
   " Misc {

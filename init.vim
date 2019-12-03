@@ -190,26 +190,120 @@ scriptencoding utf-8
     let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
 
-  "  ncm2 {
-    " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-    " found' messages
-    set shortmess+=c
+  " "  ncm2 {
+  "   " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+  "   " found' messages
+  "   set shortmess+=c
+  "
+  "   " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+  "   inoremap <c-c> <ESC>
+  "
+  "   " When the <Enter> key is pressed while the popup menu is visible, it only
+  "   " hides the menu. Use this mapping to close the menu and also start a new
+  "   " line.
+  "   inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+  "
+  "   " Use <TAB> to select the popup menu:
+  "   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  "   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  "
+  "   autocmd BufEnter * call ncm2#enable_for_buffer()
+  "   au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+  "   au User Ncm2PopupClose set completeopt=menuone
+  "  }
+  "  coc vimm {
+" if hidden is not set, TextEdit might fail.
+set hidden
 
-    " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-    inoremap <c-c> <ESC>
+" Some server have issues with backup files, see #649
+set nobackup
+set nowritebackup
 
-    " When the <Enter> key is pressed while the popup menu is visible, it only
-    " hides the menu. Use this mapping to close the menu and also start a new
-    " line.
-    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Better display for messages
+set cmdheight=2
 
-    " Use <TAB> to select the popup menu:
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
 
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-    au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-    au User Ncm2PopupClose set completeopt=menuone
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` for fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
   "  }
   "  vim Monster {
     let g:monster#completion#backend = 'solargraph'
@@ -238,7 +332,7 @@ scriptencoding utf-8
   " Vim Fugitive {
     nnoremap <silent> <leader>gs :Gstatus<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
-    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gc :Gcommit -v<CR>
     nnoremap <silent> <leader>gb :Gblame<CR>
     nnoremap <silent> <leader>gl :Glog<CR>
     nnoremap <silent> <leader>gp :Git push<CR>
@@ -322,7 +416,7 @@ scriptencoding utf-8
   " }
 
   " closetag{
-    let g:closetag_filenames = '*.html,*.xhtml,*.xml,*.js,*.jsx'
+    let g:closetag_filenames = '*.html,*.xhtml,*.xml,*.js,*.jsx,*.vue'
   "}
 
   " hardmode {

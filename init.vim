@@ -35,12 +35,13 @@ scriptencoding utf-8
   set iskeyword-=#                    " '#' is an end of word designator
   set iskeyword-=-                    " '-' is an end of word designator
   set iskeyword-=_                    " '_' is an end of word designator
+"}
 
 " init vim-plug {
   if filereadable(expand('~/.cpitt-vim/init.plug.vim'))
     source ~/.cpitt-vim/init.plug.vim
   endif
-" }
+"}
 
 " Key Remappings {
   " The default leader is '\', but many people prefer ',' as it's in a standard
@@ -76,7 +77,9 @@ scriptencoding utf-8
   " Clear search
   nmap <silent> <leader>/ :nohlsearch<CR>
 
-" Formatting {
+  " }
+
+  " Formatting {
   set nowrap                      " Do not wrap long lines
   set autoindent                  " Indent at the same level of the previous line
   set shiftwidth=2                " Use indents of 2 spaces
@@ -191,7 +194,6 @@ scriptencoding utf-8
   " }
 
   "  coc.vim {
-
     let g:coc_global_extensions = [
           \'coc-css',
           \'coc-dictionary',
@@ -302,9 +304,7 @@ scriptencoding utf-8
     " Use `:Fold` for fold current buffer
     command! -nargs=? Fold :call     CocAction('fold', <f-args>)
   "  }
-  "  vim Monster {
-    let g:monster#completion#backend = 'solargraph'
-    " }
+
   " NerdTree {
     map <C-e> :NERDTreeToggle<CR>
     map <leader>e :NERDTreeFind<CR>
@@ -442,12 +442,14 @@ scriptencoding utf-8
   " autopairs{
     let g:AutoPairsShortcutToggle = ''
   " }
+
   " Vim Rooter {
     " Trigger Rooter even when file isn' opened
     augroup vimrc_rooter
       autocmd VimEnter * :Rooter
     augroup END
   " }
+" }
 
 " Functions {
   " Strip whitespace {

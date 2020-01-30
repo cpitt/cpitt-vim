@@ -60,9 +60,9 @@
 
   " Javascript Plugins {
     Plug 'elzr/vim-json'
-    Plug 'Quramy/vim-js-pretty-template'
-    " Plug 'pangloss/vim-javascript' " better Javascript support
-    Plug 'othree/yajs.vim'
+    " Plug 'Quramy/vim-js-pretty-template'
+    Plug 'pangloss/vim-javascript' " better Javascript support
+    " Plug 'othree/yajs.vim'
     Plug 'othree/es.next.syntax.vim'
     " Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'mxw/vim-jsx' " Better jsx support
@@ -99,12 +99,15 @@
   " Misc {
     Plug 'takac/vim-hardtime'
     Plug 'ekalinin/Dockerfile.vim'
+    Plug 'mattn/webapi-vim'
+    Plug 'mattn/gist-vim'
+    Plug 'jparise/vim-graphql'
   " }
 
   " Markdown {
-    Plug 'dkarter/bullets.vim' " Add bullet support for markdown
-    Plug 'tpope/vim-markdown' " Upstream markdown plugin
-    Plug 'rhysd/vim-gfm-syntax' " Add gh flavored markdown support
+    " Plug 'dkarter/bullets.vim' " Add bullet support for markdown
+    Plug 'plasticboy/vim-markdown' " Upstream markdown plugin
+    " Plug 'rhysd/vim-gfm-syntax' " Add gh flavored markdown support
   " }
 
   call plug#end()

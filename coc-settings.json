@@ -4,15 +4,29 @@
   "tsserver.npm": "/Users/cameron.pitt/.nvm/versions/node/v10.11.0/bin/npm",
   "tsserver.disableAutomaticTypeAcquisition": false,
   "typescript.suggest.autoImports": true,
+  "tslint.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
-    "javascriptreact",
     "vue",
     "javascript",
-    "javascript.jsx"
+    "javascript.jsx",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   "eslint.enable": true,
-
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascript.jsx",
+    "javascriptreact",
+    "typescript",
+    "typescript.jsx",
+    "typescriptreact",
+    "css",
+    "markdown",
+    "json"
+  ],
+  "explorer.icon.enableNerdfont": true,
   "coc.source.word.priority": 1,
   "coc.source.dictionary.priority": 2,
   "yaml.customTags": [
@@ -38,6 +52,18 @@
     "!ImportValue scalar",
     "!Cidr scalar"
   ],
-  "yaml.validate": true
+  "markdownlint.onSave": true,
+  "yaml.validate": true,
+  "snippets.extends": {
+    "typescriptreact": ["typescript"]
+  },
+  "cSpell.userWords": [
+    "Debounced",
+    "Grotesk",
+    "cicd",
+    "codebuild",
+    "fluentsms",
+    "rerender"
+  ],
+  "coc.preferences.rootPatterns": [".git", "package.json"]
 }
-

@@ -38,27 +38,39 @@
   " General Programming {
     Plug 'mbbill/undotree' " Undo history viewer
     Plug 'tpope/vim-surround' " surround text with char/s
-    Plug 'jiangmiao/auto-pairs' " Automatically close quotes, brackets, ect
     Plug 'editorconfig/editorconfig-vim' " respect .editorconfig
     Plug 'tpope/vim-fugitive' " Useful git commands in vim
     Plug 'airblade/vim-gitgutter' " Gutter diff signs git only
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
     Plug 'tomtom/tcomment_vim'
     Plug 'godlygeek/tabular' " align on characters
-
     Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
     Plug 'tpope/vim-dotenv'
   " }
 
-  " Snippets {
-    Plug 'SirVer/ultisnips'
+  " Coc extensions {
+    " Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-dictionary', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'josa42/coc-docker', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'josa42/coc-sh', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-vetur', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-word', {'do': 'yarn install --frozen-lockfile'}
+    " Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+    " }
+
+    " Snippets {
+    " Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
-    Plug 'cpitt/vim-react-snippets'
-    Plug 'mmozuras/snipmate-mocha'
-    Plug 'bonsaiben/bootstrap-snippets'
   " }
 
   " Javascript Plugins {
+    Plug 'neoclide/jsonc.vim'
     Plug 'elzr/vim-json'
     " Plug 'Quramy/vim-js-pretty-template'
     Plug 'pangloss/vim-javascript' " better Javascript support
@@ -67,9 +79,11 @@
     " Plug 'isRuslan/vim-es6' " syntax highlighting improvements and es6 snippets
     Plug 'mxw/vim-jsx' " Better jsx support
     Plug 'othree/jspc.vim', {'for': ['javascript']} " Javascript parameter completion
-    Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
+    " Plug 'Galooshi/vim-import-js', { 'do': 'yarn global add import-js'  }
     Plug 'posva/vim-vue' " Vue file syntax support
-    " }
+    Plug 'mlaursen/vim-react-snippets'
+  " }
+
   "  TypeScript {
     Plug 'HerringtonDarkholme/yats.vim'
   "  }

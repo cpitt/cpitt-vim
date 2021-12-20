@@ -63,6 +63,7 @@
     "cicd",
     "codebuild",
     "fluentsms",
+    "hookform",
     "rerender"
   ],
   "coc.preferences.rootPatterns": [".git", "package.json"]

@@ -72,7 +72,7 @@ scriptencoding utf-8
   nnoremap Y y$
 
   " For when you forget to sudo.. Really Write the file.
-  cmap w!! w !sudo tee % >/dev/null
+  cmap w!! :w suda://%
 
   " Clear search
   nmap <silent> <leader>/ :nohlsearch<CR>
@@ -220,18 +220,17 @@ scriptencoding utf-8
     " }
 
   " Vim Fugitive {
-    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gs :G<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
-    nnoremap <silent> <leader>gc :Gcommit -v<CR>
-    nnoremap <silent> <leader>gb :Gblame<CR>
-    nnoremap <silent> <leader>gl :Glog<CR>
-    nnoremap <silent> <leader>gp :Git push<CR>
+    nnoremap <silent> <leader>gc :G commit -v<CR>
+    nnoremap <silent> <leader>gb :G blame<CR>
+    nnoremap <silent> <leader>gl :Gclog<CR>
+    nnoremap <silent> <leader>gp :G push<CR>
     nnoremap <silent> <leader>gr :Gread<CR>
     nnoremap <silent> <leader>gw :Gwrite<CR>
     nnoremap <silent> <leader>ge :Gedit<CR>
     " Mnemonic _i_nteractive
     nnoremap <silent> <leader>gi :Git add -p %<CR>
-    nnoremap <silent> <leader>gg :SignifyToggle<CR>
     " }
 
   " jsx {
@@ -242,7 +241,7 @@ scriptencoding utf-8
 
     let g:fzf_layout = { 'down': '~20%' }
     let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-    let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+    let $FZF_DEFAULT_OPTS = '--multi --bind ctrl-a:select-all'
 
     function! s:build_quickfix_list(lines)
       call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -296,7 +295,7 @@ scriptencoding utf-8
   " NerdCommentor {
     let g:NERDSpaceDelims = 1 " add space after comment char
     let g:NERDCustomDelimiters = {
-          \ 'javascriptreact': { 'left': '//', 'leftAlt': '{/*', 'rightAlt': '*/}' },
+          \ 'javascriptreact': { 'left': '//', 'leftAlt': '{}/*', 'rightAlt': '*/}' },
           \ 'typescriptreact': { 'left': '//', 'leftAlt': '{/*', 'rightAlt': '*/}' }
           \ }
   " }
@@ -342,7 +341,7 @@ scriptencoding utf-8
 
   " Vim Rooter {
     " Trigger Rooter even when file isn' opened
-    let g:rooter_patterns = ['.git', 'package.json']
+    let g:rooter_patterns = ['.vscode']
   " }
 " }
 

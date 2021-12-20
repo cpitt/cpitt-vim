@@ -33,6 +33,7 @@
     Plug 'skywind3000/asyncrun.vim' " self explanatory
     Plug 'airblade/vim-rooter'
     Plug 'wellle/targets.vim'
+    Plug 'lambdalisue/suda.vim' "fixes sudo writes in nvim
   " }
 
   " General Programming {
@@ -121,6 +122,7 @@
   " Markdown {
     " Plug 'dkarter/bullets.vim' " Add bullet support for markdown
     Plug 'plasticboy/vim-markdown' " Upstream markdown plugin
+    Plug 'jxnblk/vim-mdx-js'
     " Plug 'rhysd/vim-gfm-syntax' " Add gh flavored markdown support
   " }
 

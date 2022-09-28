@@ -168,6 +168,8 @@ scriptencoding utf-8
     let g:airline#extensions#tabline#show_close_button = 0
     let g:airline#extensions#tabline#fnamemod = ':t'
     let g:airline#extensions#tabline#fnamecollapse = 0
+    let g:airline_detect_spell=0
+    let g:airline#extensions#coc#enabled = 1
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
     nmap <leader>3 <Plug>AirlineSelectTab3
@@ -229,6 +231,8 @@ scriptencoding utf-8
     nnoremap <silent> <leader>gr :Gread<CR>
     nnoremap <silent> <leader>gw :Gwrite<CR>
     nnoremap <silent> <leader>ge :Gedit<CR>
+    nnoremap <silent> <leader>gm :G mergetool<CR>
+
     " Mnemonic _i_nteractive
     nnoremap <silent> <leader>gi :Git add -p %<CR>
     " }
@@ -336,12 +340,12 @@ scriptencoding utf-8
   " }
 
   " autopairs{
-    " let g:AutoPairsShortcutToggle = ''
+    let g:AutoPairsShortcutToggle = ''
   " }
 
   " Vim Rooter {
     " Trigger Rooter even when file isn' opened
-    let g:rooter_patterns = ['.vscode']
+    let g:rooter_patterns = ['.vscode', '.git']
   " }
 " }
 

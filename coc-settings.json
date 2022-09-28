@@ -4,17 +4,7 @@
   "tsserver.npm": "/Users/cameron.pitt/.nvm/versions/node/v10.11.0/bin/npm",
   "tsserver.disableAutomaticTypeAcquisition": false,
   "typescript.suggest.autoImports": true,
-  "tslint.autoFixOnSave": true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "vue",
-    "javascript",
-    "javascript.jsx",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascript.jsx",
@@ -26,45 +16,34 @@
     "markdown",
     "json"
   ],
+  "prettier.disableLanguages": ["vue", "typescriptreact", "typescript"],
   "explorer.icon.enableNerdfont": true,
   "coc.source.word.priority": 1,
   "coc.source.dictionary.priority": 2,
-  "yaml.customTags": [
-    "!Base64 mapping",
-    "!ImportValue mapping",
-    "!And sequence",
-    "!Equals sequence",
-    "!GetAtt sequence",
-    "!If sequence",
-    "!FindInMap sequence",
-    "!Join sequence",
-    "!Not sequence",
-    "!Or sequence",
-    "!Select sequence",
-    "!Sub sequence",
-    "!Split sequence",
-    "!Cidr sequence",
-    "!Ref scalar",
-    "!Sub scalar",
-    "!GetAZs scalar",
-    "!GetAtt scalar",
-    "!Condition scalar",
-    "!ImportValue scalar",
-    "!Cidr scalar"
-  ],
   "markdownlint.onSave": true,
   "yaml.validate": true,
   "snippets.extends": {
     "typescriptreact": ["typescript"]
   },
+  "coc.preferences.rootPatterns": [".git", "package.json"],
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  },
   "cSpell.userWords": [
     "Debounced",
-    "Grotesk",
-    "cicd",
-    "codebuild",
+    "Inlines",
+    "Prefetch",
+    "SFDT",
+    "clsx",
+    "debouncing",
     "fluentsms",
-    "hookform",
-    "rerender"
-  ],
-  "coc.preferences.rootPatterns": [".git", "package.json"]
+    "presave",
+    "refetch",
+    "unmount",
+    "upsert"
+  ]
 }

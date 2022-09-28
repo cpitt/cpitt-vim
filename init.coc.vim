@@ -1,3 +1,25 @@
+let g:coc_global_extensions = [
+      \"coc-spell-checker",
+      \"coc-vimlsp",
+      \"coc-markdownlint",
+      \"coc-docker",
+      \"coc-go",
+      \"coc-sh",
+      \"coc-css",
+      \"coc-eslint",
+      \"coc-highlight",
+      \"coc-html",
+      \"coc-json",
+      \"coc-prettier",
+      \"coc-snippets",
+      \"coc-tsserver",
+      \"coc-ultisnips",
+      \"coc-dictionary",
+      \"coc-word",
+      \"coc-xml",
+      \"coc-yaml",
+      \"coc-explorer"
+      \]
 " TextEdit might fail if hidden is not set.
 set hidden
 

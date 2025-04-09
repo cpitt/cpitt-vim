@@ -106,7 +106,7 @@ scriptencoding utf-8
 
   let g:one_allow_italics=1 " I love italic for comments
   set background=dark
-  color one
+  color base16-material
 
   set tabpagemax=15               " Only show 15 tabs
   set showmode                    " Display the current mode
@@ -160,7 +160,7 @@ scriptencoding utf-8
 
 " Plugin configuration {
   " Airline {
-    let g:airline_theme='one'
+    let g:airline_theme='base16_material'
     let g:airline_powerline_fonts=1
     let g:airline#extensions#tabline#enabled=1
     let g:airline#extensions#tabline#show_buffers=0
@@ -195,7 +195,7 @@ scriptencoding utf-8
     let g:UltiSnipsSnippetDir='~/.vim/UltiSnips/'
   " }
   " coc {
-    source ~/.cpitt-vim/init.coc.vim
+     source ~/.cpitt-vim/init.coc.vim
   " }
 
 

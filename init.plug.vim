@@ -21,6 +21,7 @@
     " Plug 'scrooloose/nerdtree' " file explorer
     Plug 'chriskempson/base16-vim' "vim 16color colorschemes
     Plug 'rakr/vim-one' " one colors
+    Plug 'tomasiser/vim-code-dark'
     Plug 'tpope/vim-repeat' " repeat plugin action with . aswell
     Plug 'nathanaelkane/vim-indent-guides' " highlight indent depths
     Plug 'tpope/vim-abolish' "fancy replacement (mostly useful for switching casing snakeCase->crs camel_case->crc MixedCase->crm)
@@ -32,9 +33,12 @@
     Plug 'skywind3000/asyncrun.vim' " self explanatory
     Plug 'airblade/vim-rooter'
     Plug 'wellle/targets.vim' " additional text object
-    Plug 'jiangmiao/auto-pairs'
+    " Plug 'jiangmiao/auto-pairs'
     Plug 'lambdalisue/suda.vim' "fixes sudo writes in nvim
     Plug 'lbrayner/vim-rzip'
+    Plug 'github/copilot.vim'
+    Plug 'robitx/gp.nvim'
+    "
   " }
 
   " General Programming {
@@ -46,7 +50,7 @@
     Plug 'rhysd/conflict-marker.vim' " Jump to merge conflict markers
     Plug 'tomtom/tcomment_vim' " easy comment toggling
     Plug 'godlygeek/tabular' " align on characters
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-dotenv'
   " }
 
@@ -83,7 +87,8 @@
   " }
 
   " Html Plugins {
-    Plug 'alvan/vim-closetag'
+
+    " Plug 'alvan/vim-closetag'
     Plug 'tpope/vim-haml'
   " }
 

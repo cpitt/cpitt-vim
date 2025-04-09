@@ -1,9 +1,6 @@
 {
-  "tsserver.log": "verbose",
-  "tsserver.enableJavascript": true,
-  "tsserver.npm": "/Users/cameron.pitt/.nvm/versions/node/v10.11.0/bin/npm",
-  "tsserver.disableAutomaticTypeAcquisition": false,
-  "typescript.suggest.autoImports": true,
+  "typescript.showUnused": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": true,
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
@@ -14,9 +11,9 @@
     "typescriptreact",
     "css",
     "markdown",
-    "json"
+    "json",
+    "jsonc"
   ],
-  "prettier.disableLanguages": ["vue", "typescriptreact", "typescript"],
   "explorer.icon.enableNerdfont": true,
   "coc.source.word.priority": 1,
   "coc.source.dictionary.priority": 2,
@@ -25,7 +22,7 @@
   "snippets.extends": {
     "typescriptreact": ["typescript"]
   },
-  "coc.preferences.rootPatterns": [".git", "package.json"],
+  "coc.preferences.rootPatterns": [".vim/coc-settings", ".git", "package.json"],
   "languageserver": {
     "graphql": {
       "command": "graphql-lsp",
@@ -38,12 +35,16 @@
     "Inlines",
     "Prefetch",
     "SFDT",
+    "Siteimprove",
+    "airbyte",
     "clsx",
     "debouncing",
     "fluentsms",
+    "jsonl",
     "presave",
     "refetch",
     "unmount",
     "upsert"
-  ]
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }
